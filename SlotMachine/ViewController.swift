@@ -20,10 +20,14 @@ class ViewController: UIViewController {
     let kMarginForView:CGFloat = 10.0
     let kSixth:CGFloat = 1.0/6.0
     
+    //this is a type UILabel, but not intialized, not in memory
+    var titleLabel:UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContainerViews()
+        setupFirstContainer(self.firstContainer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,6 +51,17 @@ class ViewController: UIViewController {
         self.fourthContainer = UIView(frame: CGRect(x: self.view.bounds.origin.x + kMarginForView, y: firstContainer.frame.height + secondContainer.frame.height + thirdContainer.frame.height, width: self.view.bounds.width - (kMarginForView * 2), height: self.view.bounds.height * kSixth))
         self.fourthContainer.backgroundColor = UIColor.blackColor()
         self.view.addSubview(self.fourthContainer)
+    }
+    
+    func setupFirstContainer(containerView:UIView){
+        //intializinf an instance of UILabel
+        self.titleLabel = UILabel()
+        self.titleLabel.text = "Super Slots"
+        self.titleLabel.textColor = UIColor.yellowColor()
+        self.titleLabel.font = UIFont(name: "MarkerFelt-Wide", size: 40)
+        self.titleLabel.sizeToFit()
+        self.titleLabel.center = containerView.center
+        containerView.addSubview(self.titleLabel)
     }
 
 
