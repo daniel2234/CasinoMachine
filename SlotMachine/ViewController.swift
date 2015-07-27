@@ -10,6 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    //unwrapping implicit unwrapping optionals
+    var firstContainer:UIView!
+    var secondContainer:UIView!
+    var thirdContainer:UIView!
+    var fourthContainer:UIView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
