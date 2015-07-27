@@ -20,6 +20,14 @@ class ViewController: UIViewController {
     let kMarginForView:CGFloat = 10.0
     let kSixth:CGFloat = 1.0/6.0
     
+    //number of columns
+    let kNumberOfContainers = 3
+    //number of rows
+    let kNumberOfSlots = 3
+    
+    let kThird:CGFloat = 1.0/3.0
+    let kMarginForSlot:CGFloat = 2.0
+    
     //this is a type UILabel, but not intialized, not in memory
     var titleLabel:UILabel!
     
@@ -28,6 +36,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupContainerViews()
         setupFirstContainer(self.firstContainer)
+        setupSecondContainer(self.secondContainer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,7 +61,7 @@ class ViewController: UIViewController {
         self.fourthContainer.backgroundColor = UIColor.blackColor()
         self.view.addSubview(self.fourthContainer)
     }
-    
+    //setup first container that takes in uiview but adds a label onto the view
     func setupFirstContainer(containerView:UIView){
         //intializinf an instance of UILabel
         self.titleLabel = UILabel()
@@ -63,7 +72,18 @@ class ViewController: UIViewController {
         self.titleLabel.center = containerView.center
         containerView.addSubview(self.titleLabel)
     }
-
+    //setup a 9 by 9 grid for cards
+    func setupSecondContainer(containerView:UIView){
+        for var containerNumber = 0; containerNumber < kNumberOfContainers; ++containerNumber{
+            for var slotNumber = 0; slotNumber < kNumberOfSlots; ++slotNumber{
+                let slotImageView = UIImageView()
+                slotImageView.backgroundColor = UIColor.yellowColor()
+               slotImageView.frame = CGRect(x: containerView.bounds.origin.x + (containerView.bounds.size.width * CGFloat(containerNumber) * kThird), y: containerView.bounds.origin.y + (containerView.bounds.size.height * CGFloat(slotNumber) * kThird), width: containerView.bounds.width * kThird - kMarginForSlot, height: containerView.bounds.height * kThird - kMarginForSlot)
+                containerView.addSubview(slotImageView)
+                
+            }
+        }
+    }
 
 }
 
